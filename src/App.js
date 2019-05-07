@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Navbar from './navbar/navbar';
+import Sidebar from './Sidebar/Sidebar';
+import Content from './Content/Content';
+import './App.css';
 import STORE from './dummy-store';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    state = STORE;
+    this.state = STORE;
   }
 
   render() {
     return (
-      <div  className='App'>
+      <div className="App">
         <Navbar />
-        <main>
-          <section>
-            Sidebar
-          </section>
-          <section>
-            Content
-          </section>
+        <main className="main">
+          <Sidebar />
+          <Content />
         </main>
       </div>
     );
