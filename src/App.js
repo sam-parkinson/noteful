@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import Navbar from './navbar/navbar';
+import STORE from './dummy-store';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    state = STORE;
+  }
+
+  render() {
+    return (
+      <div  className='App'>
+        <Navbar />
+        <main>
+          <section>
+            Sidebar
+          </section>
+          <section>
+            Content
+          </section>
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
