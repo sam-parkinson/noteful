@@ -13,7 +13,16 @@ class Content extends Component {
         exact
         path='/'
         render={() =>
-          <MainPage notes={notes}/>}
+          <MainPage 
+            notes={notes}
+          />}
+       />
+       <Route 
+        path='/folder/:folderId'
+        render={() =>
+          <MainPage 
+            notes={notes}
+          />}
        />
       </section>
     );
