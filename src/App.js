@@ -18,7 +18,9 @@ class App extends Component {
         <Navbar />
         <main className="main">
           <Sidebar />
-          <Content />
+          <Content 
+            notes={this.state.notes}
+          />
         </main>
       </div>
     );
