@@ -8,8 +8,10 @@ class MainPage extends Component {
     const notes = this.props.notes.map(note => 
       <Note 
         key={note.id}
+        id={note.id}
         name={note.name}
         modified={note.modified}
+        handleSelectNote={this.props.handleSelectNote}
       />
     )
 

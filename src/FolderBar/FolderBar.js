@@ -6,12 +6,15 @@ class FolderBar extends Component {
 
   render() {
 
-    const folderClass = (this.props.folders.id === this.props.selected 
-      ? "folder-list-item selected-folder" 
-      : "folder-list-item")
-
     const folderList = this.props.folders.map(folder => 
-        <li key={folder.id} className={folderClass}>
+        <li 
+          key={folder.id} 
+          className={
+            folder.id === this.props.selected 
+              ? "folder-list-item selected-folder" 
+              : "folder-list-item"
+          }
+        >
           <Link 
             to={`/folder/${folder.id}`}
             onClick={() => this.props.handleSelectFolder(folder.id)}

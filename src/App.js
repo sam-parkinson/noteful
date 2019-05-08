@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
 import Navbar from './navbar/navbar';
 import Sidebar from './Sidebar/Sidebar';
 import Content from './Content/Content';
 import './App.css';
 import STORE from './dummy-store';
-
-// selected will indicate which folder is selected
-// use selected in main page and main sidebar, to color relevant li in sidebar and filter by note id in main
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +12,7 @@ class App extends Component {
       folders: STORE.folders,
       notes: STORE.notes,
       selected: null,
+      noteViewed: null,
     };
   }
 
@@ -25,20 +22,43 @@ class App extends Component {
     });
   }
 
+  handleGoHome() {
+    this.setState({
+      selected: null,
+    })
+  }
+
+  handleSelectNote = (id) => {
+    const noteViewed = this
+      .state
+      .notes
+      .filter(
+        note => note.id === id
+    );
+    this.setState({
+      noteViewed: noteViewed,
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Navbar 
+          handleGoHome={this.handleGoHome}
+        />
         <main className="main">
           <Sidebar 
             folders={this.state.folders}
             notes={this.state.notes}
             selected={this.state.selected}
+            noteViewed={this.state.noteViewed}
             handleSelectFolder={this.handleSelectFolder}
           />
           <Content 
             notes={this.state.notes}
             selected={this.state.selected}
+            noteViewed={this.state.noteViewed}
+            handleSelectNote={this.handleSelectNote}
           />
         </main>
       </div>

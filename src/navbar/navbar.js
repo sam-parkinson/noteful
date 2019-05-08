@@ -7,7 +7,10 @@ class Navbar extends Component {
     return(
       <header className="navbar">
         <h1>
-          <Link to="/">
+          <Link 
+            to="/"
+            onClick={this.props.handleGoHome}
+          >
             Noteful
           </Link>
         </h1>
