@@ -16,7 +16,7 @@ class Note extends Component {
             {this.props.name}
           </Link>
         </h2>
-        <p>{this.props.modified}</p>
+        <p>{this.props.modified.toLocaleString('en-US')}</p>
       </li>
     );
   }
