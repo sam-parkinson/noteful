@@ -8,13 +8,7 @@ class AppBody extends Component {
   render() {
     return (
       <main className="main">
-        <Sidebar 
-          folders={this.props.folders}
-          notes={this.props.notes}
-          selected={this.props.selected}
-          noteViewed={this.props.noteViewed}
-          handleSelectFolder={this.props.handleSelectFolder}
-        />
+        <Sidebar />
         <Content 
           notes={this.props.notes}
           selected={this.props.selected}

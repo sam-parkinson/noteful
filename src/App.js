@@ -3,14 +3,13 @@ import Navbar from './navbar/navbar';
 import AppBody from './AppBody/AppBody';
 import './App.css';
 import NotefulContext from './NotefulContext';
-import STORE from './dummy-store';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      folders: STORE.folders,
-      notes: STORE.notes,
+      folders: [],
+      notes: [],
       selected: null,
       noteViewed: null,
     };
@@ -34,10 +33,38 @@ class App extends Component {
       .notes
       .filter(
         note => note.id === id
-    );
+      );
     this.setState({
       noteViewed: noteViewed,
     });
+  }
+
+  removeNote = (id) => {
+    const newNotes = this
+      .state
+      .notes
+      .filter(
+        note => note.id !== id
+      );
+    this.setState({
+      notes: newNotes,
+    });
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:9090/folders')
+      .then(res => res.json())
+      .then(data => this.setState({
+        folders: data,
+      }))
+      .catch(err => console.log(err));
+    
+    fetch('http://localhost:9090/notes')
+      .then(res => res.json())
+      .then(nt => this.setState({
+        notes: nt,
+      }))
+      .catch(err => console.log(err))  
   }
 
   render() {
@@ -50,6 +77,7 @@ class App extends Component {
       handleSelectFolder: this.handleSelectFolder,
       handleGoHome: this.handleGoHome,
       handleSelectNote: this.handleSelectNote,
+      removeNote: this.removeNote,
     }
 
     return (

@@ -8,6 +8,7 @@ const NotefulContext = React.createContext({
   handleSelectFolder: () => {},
   handleGoHome: () => {},
   handleSelectNote: () => {},
+  removeNote: () => {},
 })
 
 export default NotefulContext;
