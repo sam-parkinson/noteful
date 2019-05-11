@@ -9,8 +9,7 @@ class Navbar extends Component {
   render() {  
     return(
       <NotefulContext.Consumer>
-        {(value) =>{
-          console.log(value)
+        {(value) => {
           return(
             <header className="navbar">
             <h1>
@@ -23,8 +22,7 @@ class Navbar extends Component {
             </h1>
           </header>
           )
-        }}
-        
+        }}        
       </NotefulContext.Consumer>      
     );
   }

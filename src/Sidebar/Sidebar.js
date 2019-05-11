@@ -7,39 +7,20 @@ import NoteBar from '../NoteBar/NoteBar';
 class Sidebar extends Component {
   render() {
 
-    const folders = this.props.folders
-
     return(
       <section className="sidebar">
         <Route 
           exact
           path='/'
-          render={() =>
-            <FolderBar 
-              folders={folders}
-              selected={this.props.selected}
-              handleSelectFolder={this.props.handleSelectFolder}
-            />}
+          component={FolderBar}
         />
         <Route 
           path='/folder/:folderId'
-          render={() =>
-            <FolderBar 
-              folders={folders}
-              selected={this.props.selected}
-              handleSelectFolder={this.props.handleSelectFolder}
-            />
-          }
+          component={FolderBar}
         />
         <Route 
           path='/note/:noteId'
-          render={() => 
-            <NoteBar 
-              folders={folders}
-              noteViewed={this.props.noteViewed}
-              handleSelectFolder={this.props.handleSelectFolder}
-            />
-          }
+          component={NoteBar}
         />
       </section>
     );

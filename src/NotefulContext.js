@@ -1,11 +1,13 @@
 import React from 'react';
 
 const NotefulContext = React.createContext({
-  // folders: [],
-  // notes: [],
-  // handleSelectFolder: () => {},
+  folders: [],
+  notes: [],
+  selected: null,
+  noteViewed: null,
+  handleSelectFolder: () => {},
   handleGoHome: () => {},
-  // handleSelectNote: () => {},
+  handleSelectNote: () => {},
 })
 
 export default NotefulContext;

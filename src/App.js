@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './navbar/navbar';
-import Sidebar from './Sidebar/Sidebar';
-import Content from './Content/Content';
+import AppBody from './AppBody/AppBody';
 import './App.css';
 import NotefulContext from './NotefulContext';
 import STORE from './dummy-store';
@@ -42,32 +41,33 @@ class App extends Component {
   }
 
   render() {
+
+    const contextValue = {
+      folders: this.state.folders,
+      notes: this.state.notes,
+      selected: this.state.selected,
+      noteViewed: this.state.noteViewed,
+      handleSelectFolder: this.handleSelectFolder,
+      handleGoHome: this.handleGoHome,
+      handleSelectNote: this.handleSelectNote,
+    }
+
     return (
-      <NotefulContext.Provider 
-        value={{handleGoHome: this.handleGoHome}}
-      >
-        <div className="App">
-          <Navbar 
-            handleGoHome={this.handleGoHome}
+      <div className="App">
+        <NotefulContext.Provider 
+          value={contextValue}
+        >
+          <Navbar />
+          <AppBody 
+            folders={this.state.folders}
+            notes={this.state.notes}
+            selected={this.state.selected}
+            noteViewed={this.state.noteViewed}
+            handleSelectFolder={this.handleSelectFolder}
+            handleSelectNote={this.handleSelectNote}
           />
-          <main className="main">
-            <Sidebar 
-              folders={this.state.folders}
-              notes={this.state.notes}
-              selected={this.state.selected}
-              noteViewed={this.state.noteViewed}
-              handleSelectFolder={this.handleSelectFolder}
-            />
-            <Content 
-              notes={this.state.notes}
-              selected={this.state.selected}
-              noteViewed={this.state.noteViewed}
-              handleSelectNote={this.handleSelectNote}
-            />
-          </main>
-        </div>
-      </NotefulContext.Provider>
-      
+        </NotefulContext.Provider> 
+      </div>      
     );
   }
 }
