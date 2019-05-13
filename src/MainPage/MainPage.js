@@ -3,6 +3,8 @@ import './MainPage.css';
 import Note from '../Note/Note';
 import NotefulContext from '../NotefulContext';
 
+// add button to add note here, should link to add note route
+
 class MainPage extends Component {
   static contextType = NotefulContext;
 

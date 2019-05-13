@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import './Sidebar.css';
 import FolderBar from '../FolderBar/FolderBar';
 import NoteBar from '../NoteBar/NoteBar';
+import BackBar from '../BackBar/BackBar'; 
 
 class Sidebar extends Component {
   render() {
@@ -21,6 +22,10 @@ class Sidebar extends Component {
         <Route 
           path='/note/:noteId'
           component={NoteBar}
+        />
+        <Route 
+          path='/new/:item'
+          component={BackBar}
         />
       </section>
     );

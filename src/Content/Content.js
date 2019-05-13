@@ -3,6 +3,9 @@ import { Route } from 'react-router-dom';
 import './Content.css';
 import MainPage from '../MainPage/MainPage';
 import NotePage from '../NotePage/NotePage';
+import AddFolder from '../AddFolder/AddFolder';
+
+// add route to add folder and to add note
 
 class Content extends Component {
   render() {
@@ -20,6 +23,10 @@ class Content extends Component {
         <Route 
           path='/note/:noteId'
           component={NotePage}
+        />
+        <Route 
+          path='/new/folder'
+          component={AddFolder}
         />
       </section>
     );

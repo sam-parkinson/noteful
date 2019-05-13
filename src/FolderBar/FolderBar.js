@@ -30,6 +30,9 @@ class FolderBar extends Component {
     return (
       <ul className="folder-list">
         {folderList}
+        <li>
+          <Link to='/new/folder'>Create New Folder</Link>
+        </li>
       </ul>
     );
   }

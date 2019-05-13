@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './NoteBar.css';
 import NotefulContext from '../NotefulContext';
+import BackBar from '../BackBar/BackBar';
 
 class NoteBar extends Component {
   static contextType = NotefulContext;
@@ -29,15 +30,11 @@ class NoteBar extends Component {
           {folderBar}
         </li>
         <li className="note-list-item">
-          <button
-            onClick={() => this.props.history.goBack()}
-          >
-            Back
-          </button>
+          <BackBar />
         </li>
       </ul>
     );
   }
 }
 
-export default withRouter(NoteBar);
+export default NoteBar;
