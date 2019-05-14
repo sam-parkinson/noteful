@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './MainPage.css';
 import Note from '../Note/Note';
 import NotefulContext from '../NotefulContext';
@@ -34,6 +35,9 @@ class MainPage extends Component {
     return(
       <ul className="main-page-list">
         {notes}
+        <li>
+          <Link to='/new/note'>Add Note</Link>
+        </li>
       </ul>
     )
   }

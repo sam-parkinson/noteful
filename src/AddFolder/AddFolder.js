@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class AddFolder extends Component {
   constructor(props) {
@@ -23,7 +23,13 @@ class AddFolder extends Component {
         'Content-Type': 'application/json'
       },
     })
-      .then(this.props.history.goBack)
+      .then(res => res.json())
+      .then(resJ => console.log(resJ))
+      .then(<Redirect to="/" />)
+      .catch(err => {
+        console.log(err);
+        alert('Unable to create new folder')
+      });
   }
 
   render () {
@@ -38,4 +44,4 @@ class AddFolder extends Component {
   }
 }
 
-export default withRouter(AddFolder);
+export default AddFolder;
