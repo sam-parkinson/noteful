@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 class AddFolder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '',
       name: ''
     };
-  }
-
-  makeID() {
-    const newID = new Date().valueOf().toString();
-    this.setState({id: newID});
   }
   
   updateName(name) {
@@ -20,11 +15,15 @@ class AddFolder extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
-  }
-
-  componentDidMount() {
-    this.makeID();
+    
+    fetch('http://localhost:9090/folders', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(this.props.history.goBack)
   }
 
   render () {
@@ -39,4 +38,4 @@ class AddFolder extends Component {
   }
 }
 
-export default AddFolder
+export default withRouter(AddFolder);
