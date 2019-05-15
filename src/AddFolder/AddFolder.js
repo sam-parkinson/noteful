@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 
 class AddFolder extends Component {
   constructor(props) {
@@ -23,9 +22,10 @@ class AddFolder extends Component {
         'Content-Type': 'application/json'
       },
     })
-      .then(res => res.json())
-      .then(resJ => console.log(resJ))
-      .then(<Redirect to="/" />)
+      .then(res => {
+        return res.json()
+      })
+      .then(this.props.history.push('/'))
       .catch(err => {
         console.log(err);
         alert('Unable to create new folder')

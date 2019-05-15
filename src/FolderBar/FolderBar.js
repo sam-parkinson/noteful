@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import FolderError from './FolderError';
 import './FolderBar.css';
 import NotefulContext from '../NotefulContext';
 
@@ -8,6 +9,7 @@ class FolderBar extends Component {
 
   render() {
     const folderList = this.context.folders.map(folder => 
+      <FolderError>
         <li 
           key={folder.id} 
           className={
@@ -25,7 +27,7 @@ class FolderBar extends Component {
             {folder.name}
           </Link>
         </li>
-      )
+      </FolderError>)
 
     return (
       <ul className="folder-list">

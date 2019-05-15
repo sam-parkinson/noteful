@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
 
 class AddNote extends Component {
@@ -22,7 +21,14 @@ class AddNote extends Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(<Redirect to="/" />)
+    .then(res => {
+      return res.json()
+    })
+    .then(this.props.history.push('/'))
+    .catch(err => {
+      console.log(err);
+      alert('Unable to post new note')
+    })
   }
 
   handleNameChange(name) {
