@@ -86,14 +86,7 @@ class App extends Component {
           value={contextValue}
         >
           <Navbar />
-          <AppBody 
-            folders={this.state.folders}
-            notes={this.state.notes}
-            selected={this.state.selected}
-            noteViewed={this.state.noteViewed}
-            handleSelectFolder={this.handleSelectFolder}
-            handleSelectNote={this.handleSelectNote}
-          />
+          <AppBody />
         </NotefulContext.Provider> 
       </div>      
     );

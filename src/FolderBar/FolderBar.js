@@ -9,7 +9,7 @@ class FolderBar extends Component {
 
   render() {
     const folderList = this.context.folders.map(folder => 
-      <FolderError>
+      <FolderError key={folder.id}>
         <li 
           key={folder.id} 
           className={

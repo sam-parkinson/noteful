@@ -3,11 +3,17 @@ import NoteError from './NoteError';
 import './Note.css';
 import { Link } from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
+import PropTypes from 'prop-types';
 
-// TODO: format date modified
 
 class Note extends Component {
   static contextType = NotefulContext
+
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    modified: PropTypes.string.isRequired,
+  }
 
   handleDeleteNote = (id) => {
     fetch(`http://localhost:9090/notes/${id}`, {

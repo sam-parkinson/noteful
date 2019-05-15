@@ -9,12 +9,7 @@ class AppBody extends Component {
     return (
       <main className="main">
         <Sidebar />
-        <Content 
-          notes={this.props.notes}
-          selected={this.props.selected}
-          noteViewed={this.props.noteViewed}
-          handleSelectNote={this.props.handleSelectNote}
-        /> 
+        <Content /> 
       </main>
     );
   }
