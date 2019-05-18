@@ -9,29 +9,29 @@ class FolderBar extends Component {
 
   render() {
     const folderList = this.context.folders.map(folder => 
-      <FolderError key={folder.id}>
-        <li 
-          key={folder.id} 
-          className={
-            folder.id === this.context.selected 
-              ? "folder-list-item selected-folder" 
-              : "folder-list-item"
-          }
+      <li 
+        key={folder.id} 
+        className={
+          folder.id === this.context.selected 
+            ? "folder-list-item selected-folder" 
+            : "folder-list-item"
+        }
+      >
+        <Link 
+          to={`/folder/${folder.id}`}
+          onClick={() => {
+            this.context.handleSelectFolder(folder.id)
+          }}
         >
-          <Link 
-            to={`/folder/${folder.id}`}
-            onClick={() => {
-              this.context.handleSelectFolder(folder.id)
-            }}
-          >
-            {folder.name}
-          </Link>
-        </li>
-      </FolderError>)
+          {folder.name}
+        </Link>
+      </li>)
 
     return (
       <ul className="folder-list">
+        <FolderError>
         {folderList}
+        </FolderError>
         <li>
           <Link to='/new/folder'>Create New Folder</Link>
         </li>

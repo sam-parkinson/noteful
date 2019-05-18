@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './MainPage.css';
 import Note from '../Note/Note';
+import NoteError from '../Note/NoteError'
 import NotefulContext from '../NotefulContext';
 
 // add button to add note here, should link to add note route
@@ -34,7 +35,9 @@ class MainPage extends Component {
 
     return(
       <ul className="main-page-list">
-        {notes}
+        <NoteError>
+          {notes}
+        </NoteError>
         <li>
           <Link to='/new/note'>Add Note</Link>
         </li>

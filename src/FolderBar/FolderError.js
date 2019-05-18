@@ -15,7 +15,7 @@ class FolderError extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <li>Error Accessing Folder</li>
+        <li>Error Accessing Folders</li>
       );
     }
     return this.props.children;

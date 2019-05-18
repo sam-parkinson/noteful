@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './NotePage.css';
 import Note from '../Note/Note';
+import NoteError from '../Note/NoteError';
 import NotefulContext from '../NotefulContext';
 
 class NotePage extends Component {
@@ -12,7 +13,7 @@ class NotePage extends Component {
       : null
 
     const item = note
-      ? <>
+      ? <NoteError>
           <ul className="note-page-list">
             <Note 
               key={note.id}
@@ -26,7 +27,7 @@ class NotePage extends Component {
           <p>
             {note.content}
           </p>
-        </>
+        </NoteError>
       : null
     
     return(item);

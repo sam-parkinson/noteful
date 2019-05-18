@@ -21,7 +21,7 @@ class App extends Component {
     });
   }
 
-  handleGoHome() {
+  handleGoHome = () => {
     this.setState({
       selected: null,
     })

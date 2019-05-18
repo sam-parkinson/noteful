@@ -15,7 +15,7 @@ class NoteError extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <li>This note could not be displayed</li>
+        <li>The note(s) could not be displayed</li>
       );
     }
     return this.props.children;
