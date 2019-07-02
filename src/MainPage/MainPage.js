@@ -13,12 +13,12 @@ class MainPage extends Component {
   render() {
     const notes = this.context.selected
     ? this.context.notes
-      .filter(note => note.folderId === this.context.selected)
+      .filter(note => note.folder_id === this.context.selected)
       .map(note => 
         <Note 
           key={note.id}
           id={note.id}
-          name={note.name}
+          note_name={note.note_name}
           modified={note.modified}
           handleSelectNote={this.context.handleSelectNote}
         />
@@ -27,7 +27,7 @@ class MainPage extends Component {
         <Note 
           key={note.id}
           id={note.id}
-          name={note.name}
+          note_name={note.note_name}
           modified={note.modified}
           handleSelectNote={this.context.handleSelectNote}
         />

@@ -4,18 +4,18 @@ class AddFolder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      folder_name: ''
     };
   }
   
-  updateName(name) {
-    this.setState({name});
+  updateName(folder_name) {
+    this.setState({folder_name});
   }
 
   handleSubmit(e) {
     e.preventDefault();
     
-    fetch('http://localhost:9090/folders', {
+    fetch('http://localhost:8000/api/folders', {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {
@@ -36,8 +36,8 @@ class AddFolder extends Component {
     return(
       <form onSubmit={e => this.handleSubmit(e)}>
         <h3>Create New Folder</h3>
-        <label htmlFor="name">Name: {' '}</label>
-        <input type="text" name="name" id="name" onChange={e => this.updateName(e.target.value)} required />
+        <label htmlFor="folder_name">Name: {' '}</label>
+        <input type="text" folder_name="folder_name" id="folder_name" onChange={e => this.updateName(e.target.value)} required />
         <button type="submit">Add Folder</button>
       </form>
     )

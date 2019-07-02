@@ -5,8 +5,8 @@ class AddNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      folderId: '',
+      note_name: '',
+      folder_id: '',
       content: ''
     }
   }
@@ -14,7 +14,7 @@ class AddNote extends Component {
   static contextType = NotefulContext;
 
   postNote(note) {
-    fetch('http://localhost:9090/notes', {
+    fetch('http://localhost:8000/api/notes', {
       method: 'POST',
       body: JSON.stringify(note),
       headers: {
@@ -31,16 +31,16 @@ class AddNote extends Component {
     })
   }
 
-  handleNameChange(name) {
-    this.setState({name});
+  handleNameChange(note_name) {
+    this.setState({note_name});
   }
 
   handleContentChange(content) {
     this.setState({content});
   }
 
-  handleFolderId(folderId) {
-    this.setState({folderId});
+  handleFolderId(folder_id) {
+    this.setState({folder_id});
   }
 
   handleSubmit(e) {
@@ -55,15 +55,15 @@ class AddNote extends Component {
     const options = this.context.folders.map(
       folder => (
         <option key={folder.id} value={folder.id}>
-          {folder.name}
+          {folder.folder_name}
         </option>
       )
     )
 
     return(
       <form onSubmit={e => this.handleSubmit(e)}> 
-        <label htmlFor="name" >Name: {' '}</label>
-        <input type="text" name="name" id="name" onChange={(e) => this.handleNameChange(e.target.value)} required />
+        <label htmlFor="note_name" >Name: {' '}</label>
+        <input type="text" note_name="note_name" id="note_name" onChange={(e) => this.handleNameChange(e.target.value)} required />
         <br />
         <label htmlFor="folders">Folder: {' '}</label>
         <select name="folders" onChange={(e) => this.handleFolderId(e.target.value)}  >

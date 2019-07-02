@@ -18,7 +18,7 @@ class NotePage extends Component {
             <Note 
               key={note.id}
               id={note.id}
-              name={note.name}
+              note_name={note.note_name}
               modified={note.modified}
               handleSelectNote={this.context.handleSelectNote}
               loc={this.props.location.pathname}

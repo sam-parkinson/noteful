@@ -52,14 +52,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:9090/folders')
+    fetch('http://localhost:8000/api/folders')
       .then(res => res.json())
-      .then(data => this.setState({
+      .then(data => 
+        this.setState({
         folders: data,
       }))
       .catch(err => console.log(err));
     
-    fetch('http://localhost:9090/notes')
+    fetch('http://localhost:8000/api/notes')
       .then(res => res.json())
       .then(nt => this.setState({
         notes: nt,

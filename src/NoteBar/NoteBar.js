@@ -11,7 +11,7 @@ class NoteBar extends Component {
 
     const folder = this.context.noteViewed
       ? this.context.folders.filter(
-        folder => (folder.id === this.context.noteViewed[0].folderId)
+        folder => (folder.id === this.context.noteViewed[0].folder_id)
       )
       : null
 
@@ -20,7 +20,7 @@ class NoteBar extends Component {
         to='/folder/:folderID'
         onClick={() => this.context.handleSelectFolder(folder[0].id)}
       >
-      {folder[0].name}
+      {folder[0].folder_name}
       </Link>
     : null
 

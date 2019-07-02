@@ -23,7 +23,7 @@ class FolderBar extends Component {
             this.context.handleSelectFolder(folder.id)
           }}
         >
-          {folder.name}
+          {folder.folder_name}
         </Link>
       </li>)
 

@@ -9,13 +9,13 @@ class Note extends Component {
   static contextType = NotefulContext
 
   static propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    note_name: PropTypes.string.isRequired,
     modified: PropTypes.string.isRequired,
   }
 
   handleDeleteNote = (id) => {
-    fetch(`http://localhost:9090/notes/${id}`, {
+    fetch(`http://localhost:8000/api/notes/${id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application-json'
@@ -50,7 +50,7 @@ class Note extends Component {
             to={`/note/${this.props.id}`}
             onClick={() => this.props.handleSelectNote(this.props.id)}
           >
-            {this.props.name}
+            {this.props.note_name}
           </Link>
         </h2>
         <p>{this.props.modified.toLocaleString('en-US')}</p>
