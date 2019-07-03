@@ -3,6 +3,7 @@ import Navbar from './navbar/navbar';
 import AppBody from './AppBody/AppBody';
 import './App.css';
 import NotefulContext from './NotefulContext';
+import config from './config';
 
 class App extends Component {
   constructor(props) {
@@ -52,7 +53,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/api/folders')
+    fetch('https://guarded-chamber-89552.herokuapp.com/api/folders', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
+      }
+    })
       .then(res => res.json())
       .then(data => 
         this.setState({
@@ -60,7 +67,13 @@ class App extends Component {
       }))
       .catch(err => console.log(err));
     
-    fetch('http://localhost:8000/api/notes')
+    fetch('https://guarded-chamber-89552.herokuapp.com/api/notes', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
+      }
+    })
       .then(res => res.json())
       .then(nt => this.setState({
         notes: nt,

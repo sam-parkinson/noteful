@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NotefulContext from '../NotefulContext';
+import config from '../config';
 
 class AddNote extends Component {
   constructor(props) {
@@ -14,11 +15,12 @@ class AddNote extends Component {
   static contextType = NotefulContext;
 
   postNote(note) {
-    fetch('http://localhost:8000/api/notes', {
+    fetch('https://guarded-chamber-89552.herokuapp.com/api/notes', {
       method: 'POST',
       body: JSON.stringify(note),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
       }
     })
     .then(res => {

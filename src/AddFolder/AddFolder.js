@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../config';
 
 class AddFolder extends Component {
   constructor(props) {
@@ -15,11 +16,12 @@ class AddFolder extends Component {
   handleSubmit(e) {
     e.preventDefault();
     
-    fetch('http://localhost:8000/api/folders', {
+    fetch('https://guarded-chamber-89552.herokuapp.com/api/folders', {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
       },
     })
       .then(res => {

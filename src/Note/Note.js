@@ -3,6 +3,7 @@ import './Note.css';
 import { Link } from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
 import PropTypes from 'prop-types';
+import config from '../config';
 
 
 class Note extends Component {
@@ -15,10 +16,11 @@ class Note extends Component {
   }
 
   handleDeleteNote = (id) => {
-    fetch(`http://localhost:8000/api/notes/${id}`, {
+    fetch(`https://guarded-chamber-89552.herokuapp.com/api/notes/${id}`, {
       method: 'DELETE',
       headers: {
-        'content-type': 'application-json'
+        'content-type': 'application-json',
+        'Authorization': `Bearer ${config.API_KEY}`
       }
     })
     .then(this.context.removeNote(id))
